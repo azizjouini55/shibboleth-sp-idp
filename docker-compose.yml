@@ -41,22 +41,6 @@ services:
      - back
     secrets:
      - source: sp_key
-  
-  simplesamlphp:
-    build: ./simplesamlphp/
-    links:
-      - httpd-proxy:idptestbed
-    networks:
-     - back
-    secrets:
-     - source: ssp_key
-  
-  php-cas:
-    build: ./php-cas/
-    links:
-      - httpd-proxy:idptestbed
-    networks:
-     - back
 
 networks:
   front:

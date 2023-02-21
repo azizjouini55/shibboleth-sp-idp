@@ -1,8 +1,6 @@
-FROM centos:centos7
+FROM httpd:latest
 
-RUN yum -y update \
-    && yum -y install httpd mod_ssl mod_ldap \
-    && yum -y clean all
+
 
 COPY httpd-foreground /usr/local/bin/
 COPY etc-httpd/ /etc/httpd/

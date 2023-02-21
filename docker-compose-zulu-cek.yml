@@ -14,7 +14,6 @@ services:
   idp:
     build: 
       context: ./idp/
-      dockerfile: Dockerfile-zulu-cek
     depends_on: 
      - ldap
     environment:
@@ -44,12 +43,12 @@ services:
     secrets:
      - source: sp_key
 
-  php-cas:
-    build: ./php-cas/
-    links:
-      - httpd-proxy:idptestbed
-    networks:
-     - back
+  #php-cas:
+   # build: ./php-cas/
+    #links:
+     # - httpd-proxy:idptestbed
+    #networks:
+     #- back
 
 networks:
   front:

@@ -1,8 +1,9 @@
 FROM centos:centos7 as stage
 
-RUN yum -y update \
-    && yum -y install ant doxygen git php-pear \
-    && yum -y clean all
+#RUN yum -y update \
+ #   && yum -y install ant doxygen git php-pear \
+  #  && yum -y clean all \
+   # && rm -rf /var/cache/yum/*
 
 RUN git clone --depth=1 --branch=1.3-stable https://github.com/apereo/phpCAS.git apereo/phpCAS \
  && pear upgrade --force --alldeps \
@@ -12,10 +13,9 @@ RUN git clone --depth=1 --branch=1.3-stable https://github.com/apereo/phpCAS.git
 
 FROM centos:centos7
 
-MAINTAINER Unicon, Inc.
 
 RUN yum -y update \
-    && yum -y install httpd mod_ssl php php-pear php-xml php-pdo wget \
+    && yum -y install httpd mod24_ssl.x86_64 php php-pear php-xml php-pdo wget \
     && yum -y clean all
 
 COPY --from=stage /apereo/phpCAS/utils/dist/CAS-1.3.4.tgz /
